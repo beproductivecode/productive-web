@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be Productive | Google Keep</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color:  #ff9900;
+            padding: 10px 20px;
+            color: #333;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .navbar .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .navbar a {
+            color: #333;
+            text-decoration: none;
+            padding: 0 15px;
+            line-height: 2.5em;
+        }
+        .navbar a:hover {
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+        .profile {
+            position: relative;
+            display: inline-block;
+        }
+        .profile:hover .profile-content {
+            display: block;
+        }
+        .profile-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            color: black;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            padding: 12px 16px;
+            z-index: 1;
+            right: 0;
+            border-radius: 5px;
+        }
+        .container {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            gap: 15px;
+        }
+        .note-card {
+            background: white;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: box-shadow 0.3s ease-in-out;
+        }
+        .note-card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 12px 40px rgba(0, 0, 0, 0.2);
+        }
+        .note-card h3 {
+            margin-top: 0;
+            font-size: 1.2em;
+            color: #333;
+        }
+        .note-card p {
+            font-size: 0.9em;
+            color: #666;
+        }
+        .note-card input[type="text"] {
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 1em;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+            width: calc(100% - 22px); /* Full width minus padding and border */
+        }
+        .note-card input[type="text"]:focus {
+            border-color: #ff9900;
+            box-shadow: 0 0 5px rgba(255, 235, 59, 0.5);
+            outline: none;
+        }
+        .note-card button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #ff9900;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            color: #fff;
+            transition: background-color 0.3s ease;
+        }
+        .note-card button:hover {
+            background-color: #e68300;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">Be Productive </div>
+        <div>
+            <a href="#">Home</a>
+            <a href="https://beproductivecode.github.io/productive-web/about.html">About</a>
+            <a href="https://beproductivecode.github.io/productive-web/contact.html">Contact</a>
+        </div>
+        <div class="profile">
+            <img srcset="https://lh3.googleusercontent.com/a/AEdFTp6OYJAfBBjQoTORBmoD3E-HPhFqWZX2atSHJoMT=s96-c" alt="Profile Icon" style="width:30px; height:30px; border-radius:50%;">
+            <div class="profile-content">
+                <p>.</p>
+                <p>dishamj678@gmail.com</p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="note-card">
+            <h3>Hdjjs</h3>
+            <p>Nznmnn</p>
+            <p>15-08-2023</p>
+        </div>
+        <div class="note-card">
+            <h3>&#58;&#41;</h3>
+            <p>?
+              <br>??
+              <br>???
+              <br>????
+              <br>?????
+              </p>
+          <p>15-08-2023</p>
+        </div>
+        <div class="note-card">
+          <h3>Note 3</h3>
+          <div class="saved-note" id="saved-note-1"></div>
+          <input type="text" id="note-input-1" placeholder="Enter your note here">
+          <button onclick="saveNote('saved-note-1', 'note-input-1')">Save Note</button>
+      </div>
+      <div class="note-card">
+          <h3>Note 4</h3>
+          <div class="saved-note" id="saved-note-2"></div>
+          <input type="text" id="note-input-2" placeholder="Enter your note here">
+          <button onclick="saveNote('saved-note-2', 'note-input-2')">Save Note</button>
+      </div>
+      <div class="note-card">
+          <h3>Note 5</h3>
+          <div class="saved-note" id="saved-note-3"></div>
+          <input type="text" id="note-input-3" placeholder="Enter your note here">
+          <button onclick="saveNote('saved-note-3', 'note-input-3')">Save Note</button>
+      </div>
+    </div>
+</body>
+
+<script>
+function saveNote(savedNoteId, noteInputId) {
+            var input = document.getElementById(noteInputId).value.trim();
+            var savedNoteDiv = document.getElementById(savedNoteId);
+            if (input !== "") {
+                savedNoteDiv.innerText = input;
+                savedNoteDiv.style.display = "block";
+                document.getElementById(noteInputId).value = "";
+            }
+        }
+</script>
+
+</html>
